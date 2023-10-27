@@ -3,31 +3,32 @@
 param (
     [string]$ip,
     [string]$Username = "tetra",
-    [string]$Password = "password"
+    [string]$Password = "password",
     [string]$SourceFile = "encrypted_backup.json",
-    [string]$DestinationPath "/home/tetra/backup.json"
+    [string]$DestinationPath = "/home/tetra/backup.json"
 )
 
 # Check if the IP address is provided
-if (-not $IPAddress) {
+if (-not $ip) {
     Write-Host "Please provide an IP address using the -IPAddress parameter."
     exit 1
 }
 
-$sshCommand = "ssh -l $Username -pw $Password $Username@$IPAddress"
-$scpCommand = "scp -l $Username -pw $Password $SourceFile $Username@$IPAddress:`"$DestinationPath`""
-$dcpCommand = "docker cp $DestinationPath edgeAgent:/tmp/edgeAgent/backup.json"
+$sshCommand = "ssh $Username@$ip 'sudo docker cp /home/tetra/backup.json edgeAgent:/tmp/edgeAgent/backup.json'"
+$scpCommand = "scp $SourceFile $Username@${ip}:$DestinationPath"
 $exitCommand = "exit"
 
 
 # You can execute the SSH command here, e.g., using Invoke-Expression
 # Invoke-Expression $sshCommand
+Invoke-Expression "python main.py"
 Write-Host "SCP command: $scpCommand"
+Invoke-Expression $scpCommand
 Write-Host "SSH command: $sshCommand"
-Write-Host "DCP command: $dcpCommand"
+Invoke-Expression $sshCommand
 Write-Host "Exit command: $exitCommand"
-
-
+Invoke-Expression $exitCommand
+#run scp command
 
 
 

@@ -15,8 +15,8 @@ def main():
 
     #print(dec)
 
-    print(enc)
-
+    #print(enc)
+    print("Done with encryption and decryption")
 
 
 

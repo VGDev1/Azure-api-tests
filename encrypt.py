@@ -22,10 +22,10 @@ def encrypt(ipaddr, path_backup, path_iv, genid, module_name):
         "plaintext": backup_string.decode(),
         "initializationVector": ba_iv.decode()
     }
-    print(base_url)
+    #print(base_url)
     #make json string from request body
     json_request_body = json.dumps(request_body)
-    print(json_request_body)
+    #print(json_request_body)
     response = requests.post(base_url, json=request_body)
     base64_cipher = response.json()["ciphertext"].encode()
 

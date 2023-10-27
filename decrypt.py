@@ -28,7 +28,7 @@ def decrypt(ipaddr, path_backup, path_iv, genid, module_name):
     #json_request_body = json.dumps(request_body)
     #print(json_request_body)
     response = requests.post(base_url, json=request_body)
-    print(response.json())
+    #print(response.json())
     plaintext = response.json()["plaintext"]
     plaintext = base64.b64decode(plaintext)
 
