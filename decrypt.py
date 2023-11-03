@@ -17,7 +17,7 @@ def decrypt(ipaddr, path_backup, path_iv, genid, module_name):
     decrypt_url = f"/modules/{module_name}/genid/{genid}/decrypt?api-version=2022-08-03"
 
     base_url = f"http://{ip}{decrypt_url}"
-    ba_iv = base64.b64encode(iv_string.encode()) 
+    ba_iv = base64.b64encode(iv_string.encode())
 
     request_body = {
         "ciphertext": backup_string,

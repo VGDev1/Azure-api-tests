@@ -1,5 +1,5 @@
 ## ssh into the vm, using variable ip
-  
+#ip is 172.19.159.27
 param (
     [string]$ip,
     [string]$Username = "tetra",
@@ -21,7 +21,7 @@ $exitCommand = "exit"
 
 # You can execute the SSH command here, e.g., using Invoke-Expression
 # Invoke-Expression $sshCommand
-Invoke-Expression "python main.py"
+Invoke-Expression "python main.py $ip e"
 Write-Host "SCP command: $scpCommand"
 Invoke-Expression $scpCommand
 Write-Host "SSH command: $sshCommand"
@@ -29,10 +29,3 @@ Invoke-Expression $sshCommand
 Write-Host "Exit command: $exitCommand"
 Invoke-Expression $exitCommand
 #run scp command
-
-
-
-
-
-
-

@@ -15,7 +15,7 @@ def encrypt(ipaddr, path_backup, path_iv, genid, module_name):
     ip = f"{ipaddr}:8080"
     decrypt_url = f"/modules/{module_name}/genid/{genid}/encrypt?api-version=2022-08-03"
     base_url = f"http://{ip}{decrypt_url}"
-    ba_iv = base64.b64encode(iv_string.encode()) 
+    ba_iv = base64.b64encode(iv_string.encode())
     backup_string = base64.b64encode(backup_string.encode())
 
     request_body = {
